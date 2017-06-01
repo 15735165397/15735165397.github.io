@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-05-20 21:55:10
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-06-01 00:29:26
+* @Last Modified time: 2017-06-01 10:46:17
 */
 
 'use strict';
@@ -49,7 +49,6 @@ Palette.prototype={
 			if(self.history.length>0){
 				ctx.putImageData(self.history[self.history.length-1],0,0);
 			}
-
 			ctx.beginPath();
 			ctx.moveTo(ox, oy);
 			ctx.lineTo(mx,my);
@@ -94,7 +93,10 @@ Palette.prototype={
 				ctx.putImageData(self.history[self.history.length-1],0,0);
 				}
 				ctx.beginPath();
-				ctx.strokeRect(ox,oy,mx-ox,my-oy);
+				ctx.rect(ox,oy,mx-ox,my-oy);
+                ctx.closePath();
+                ctx[self.type]();
+                console.log(self.type)
 			}
 			mask.onmouseup=function(){
 				self.history.push(ctx.getImageData(0,0,self.width,self.height))
@@ -105,6 +107,7 @@ Palette.prototype={
     },
     yuan:function(){
     	let self=this;
+        self.init();
 		mask.onmousedown=function(e){
 			let ox=e.offsetX,oy=e.offsetY;
 			ctx.lineWidth=1;
@@ -114,10 +117,11 @@ Palette.prototype={
 				ctx.clearRect(0, 0, 1000, 500);
 				if(self.history.length>0){
 				ctx.putImageData(self.history[self.history.length-1],0,0);
-			}
+		        }
 				ctx.beginPath();
 				ctx.arc(ox,oy,r,0,Math.PI*2,false);
-				ctx.stroke();
+                ctx.closePath();
+                ctx[self.type]();
 			}
 			mask.onmouseup=function(){
 				self.history.push(ctx.getImageData(0,0,self.width,self.height))
@@ -144,7 +148,8 @@ Palette.prototype={
                     ctx.lineTo(ox+r*Math.cos(angle*i),oy+r*Math.sin(angle*i))
                 }
                 ctx.closePath();
-				ctx.stroke();
+                ctx.closePath();
+                ctx[self.type]();
 			}
 			mask.onmouseup=function(){
 				self.history.push(ctx.getImageData(0,0,self.width,self.height))
@@ -334,7 +339,6 @@ Palette.prototype={
                 if(left>self.width-w){
                     left=self.width-w
                 }
-
                 if(top<0){
                     top=0;
                 }

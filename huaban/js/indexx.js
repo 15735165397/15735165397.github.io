@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-05-21 21:55:10
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-06-01 00:32:52
+* @Last Modified time: 2017-06-01 10:03:33
 */
 
 'use strict';
@@ -72,6 +72,7 @@ wenzi.onclick=function(){
  //描边、填充
 youqibtn.onclick=function(){
     palette.type = 'fill';
+    console.log(palette.type)
 }
 miaobianbtn.onclick=function(){
         palette.type = "stroke";
