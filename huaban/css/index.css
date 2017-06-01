@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-05-21 20:50:09
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-06-01 00:11:32
+* @Last Modified time: 2017-06-01 18:05:46
 */
 
 
@@ -96,4 +96,8 @@ hr{
 }
 canvas{
 	background: #fff;
+}
+.screen img{
+	position: absolute;
+	z-index: -1;
 }

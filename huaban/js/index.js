@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-05-20 21:55:10
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-06-01 10:46:17
+* @Last Modified time: 2017-06-01 18:42:51
 */
 
 'use strict';
@@ -401,4 +401,15 @@ Palette.prototype={
             }
         }
     },
+    chexiao:function(){
+        if(this.history.length==1){
+        this.ctx.putImageData(this.history[0],0,0);
+        }else if(this.history.length<1){
+            this.ctx.clearRect(0,0,1000,500);
+        }else{
+            let last = this.history.pop();
+            this.ctx.putImageData(last,0,0);
+        }
+        
+    }
 }

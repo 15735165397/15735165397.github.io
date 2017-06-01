@@ -2,7 +2,7 @@
 * @Author: Administrator
 * @Date:   2017-05-21 21:55:10
 * @Last Modified by:   Administrator
-* @Last Modified time: 2017-06-01 10:03:33
+* @Last Modified time: 2017-06-01 18:32:50
 */
 
 'use strict';
@@ -23,6 +23,7 @@ let wenzi=document.querySelector('.icon-wenzi');
 let xiangpi=document.querySelector('.icon-xiangpica');
 let eraserBtn=document.querySelector('.eraser');
 let button=document.querySelector('.icon-baocun');
+let chexiao=document.querySelector('.icon-chexiao');
 let caijian=document.querySelector('.icon-caijian');
 let clip=document.querySelector('.clip');
 let palette=new Palette(canvas,ctx,mask);
@@ -30,6 +31,7 @@ let youqi=document.querySelector('.youqi')
 let youqibtn=document.querySelector('.icon-youqi');
 let miaobian=document.querySelector('.miaobian')
 let miaobianbtn=document.querySelector('.icon-miaobian')
+let img=document.querySelector('img');
 console.log(youqi)
 
 line.onclick=function(){
@@ -84,4 +86,12 @@ youqi.onchange = function () {
 }
 miaobian.onchange = function () {
     palette.strokeStyle = miaobian.value;
+}
+button.onclick=function(){
+    let data=canvas.toDataURL('image/png').replace('data:image/png','data:stream/octet');
+    img.src=data;
+    location.href=data;
+}
+chexiao.onclick=function(){
+    palette.chexiao();
 }
